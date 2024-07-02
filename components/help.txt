@@ -1,0 +1,42 @@
+"use client";
+
+import { HiOutlineTrash } from "react-icons/hi";
+import { useRouter } from "next/navigation";
+
+export default function RemoveBtn({ id }) {
+  const router = useRouter();
+  const rmoveRefaction = async () => {
+    const confirmed = confirm("Are you sure to remove refaction?");
+
+    if (confirmed) {
+    // const confirmed = confirm("Are you sure to remove refaction?");
+    //   console.log('Confimacion:',confirmed);
+      //        http://localhost:3000/refacciones
+      //        http://localhost:3000/api/refacciones
+
+      // const res = await fetch(`http://localhost:3000/api/topics?id=${id}`, {
+      //   method: "DELETE",
+
+      //let url= `http://localhost:3000/api/refacciones?id=${id}`
+      // console.log('id:',id);
+      // console.log('Url:',url);
+     //http://localhost:3000/api/refacciones?id=66637df84fad5ab4b842820d
+      const res = await fetch(`http://localhost:3000/api/refacciones?id=${id})`, {
+        method: "DELETE",
+      });
+      // DELETE /api/refacciones?id=%2766720261e2f5983f4a1115ab%27 500 in 14ms
+
+    //   if (res.ok) {
+    //     router.refresh();
+    //   }else{
+    //     console.log('error:',res);
+    //   }
+     }
+  };
+
+  return (
+    <button onClick={rmoveRefaction} className="text-red-400">
+      <HiOutlineTrash size={24} />
+    </button>
+  );
+}
